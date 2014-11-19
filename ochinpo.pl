@@ -3,17 +3,10 @@
 use strict;
 use warnings;
 
-my $cnt = 0;
-my $rnd = 0;
-my $complete = 0;
 my @str = qw(お ち ん ぽ);
+my ($rnd, $comp, $cnt) = (0, 0, 0);
 
-while ($complete < 4) {
-	$cnt++;
-	$rnd = int(rand(4));
-	print "$str[$rnd]";
-	$complete = ($rnd == $complete) ? ++$complete : 0;
-}
+while(++$cnt){($comp < 4)? $comp = (print($str[$rnd = int(rand(4))]) && $rnd == $comp)? ++$comp : 0 : last;}
 
 print "\n";
-print $cnt,"回目で完成しました\n";
+print $cnt - 1,"回目で完成しました\n";
